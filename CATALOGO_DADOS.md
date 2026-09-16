@@ -1,5 +1,6 @@
 # Catalogo de Dados
-Este documento apresenta o catálogo das principais tabelas utilizadas nas análises do projeto. As tabelas fazem parte da camada Gold e foram construídas a partir dos dados do CNES/DATASUS e dos dados populacionais do IBGE, após as etapas de tratamento, padronização e integração realizadas nos notebooks anteriores.
+
+Este documento apresenta o catálogo das tabelas analíticas da camada Gold utilizadas no projeto. As tabelas foram construídas a partir dos dados do CNES/DATASUS e dos dados populacionais do IBGE, após as etapas de tratamento, padronização e integração realizadas nos notebooks anteriores.
 
 ---
 
@@ -163,13 +164,11 @@ Esta tabela apresenta os 20 municípios com menor oferta de leitos por 100 mil h
 | POPULACAO | Inteiro longo | 53.083 a 344.828 | População do município |
 | TOTAL_HOSPITAIS | Inteiro longo | 1 a 3 | Quantidade de hospitais |
 | TOTAL_LEITOS | Inteiro longo | 10 a 109 | Quantidade total de leitos |
-| TOTAL_LEITOS_SUS | Inteiro longo | Valores presentes no ranking | Quantidade de leitos vinculados ao SUS |
-| HOSPITAIS_100MIL_HAB | Decimal | Valores presentes no ranking | Quantidade de hospitais por 100 mil habitantes |
+| TOTAL_LEITOS_SUS | Inteiro longo | 0 a 104 | Quantidade de leitos vinculados ao SUS |
+| HOSPITAIS_100MIL_HAB | Decimal | 0,29 a 1,99 | Quantidade de hospitais por 100 mil habitantes |
 | LEITOS_100MIL_HAB | Decimal | 8,96 a 42,03 | Quantidade de leitos por 100 mil habitantes |
 
 Linhagem: CNES + IBGE → Bronze → Silver → integração dos dados → cálculo dos indicadores municipais → seleção dos 20 municípios com menor oferta relativa → Gold.
-
-Esses resultados mostram possíveis lacunas de oferta e devem ser utilizados como ponto de partida para investigação. Sozinhos, eles não são suficientes para indicar a necessidade de implantação de novos hospitais.
 
 ---
 
@@ -177,7 +176,7 @@ Esses resultados mostram possíveis lacunas de oferta e devem ser utilizados com
 
 Tabela: workspace.gold.municipios_sem_hospital_2024  
 Granularidade: um registro por município  
-Chave lógica: UF + MUNICIPIO
+Chave lógica: MUNICIPIO + UF
 
 Esta tabela apresenta os municípios que, em 2024, não possuíam estabelecimentos classificados como Hospital Geral ou Hospital Especializado dentro do recorte utilizado no projeto.
 
