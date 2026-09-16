@@ -97,3 +97,9 @@ O pipeline foi desenvolvido no Databricks e dividido em notebooks para separar a
 Os notebooks estão disponíveis na pasta [notebooks](notebooks/).
 
 As tabelas intermediárias e finais foram persistidas em formato Delta no Databricks, nos schemas `bronze`, `silver` e `gold`.
+
+### Persistência das tabelas
+
+As tabelas resultantes do pipeline foram persistidas no Databricks em formato Delta. A imagem abaixo apresenta as tabelas analíticas da camada Gold disponíveis no catálogo.
+
+![Tabelas da camada Gold persistidas no Databricks](imagens/gold_tabelas.png)
