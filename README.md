@@ -119,3 +119,55 @@ Nos dados do IBGE, foram tratados registros administrativos, valores populaciona
 Na integração entre CNES e IBGE, também foram identificadas diferenças na nomenclatura de alguns municípios. Essas ocorrências foram verificadas e tratadas por meio de equivalências controladas antes da adoção do código oficial do município como chave para a integração temporal.
 
 As validações detalhadas estão disponíveis nos notebooks da pasta [notebooks](notebooks/).
+
+## Análise de Dados
+
+A partir das tabelas da camada Gold, foram realizadas consultas em SQL para responder às perguntas definidas no início do projeto. A análise considera a evolução da infraestrutura hospitalar entre 2019 e 2024 e sua distribuição pelo território brasileiro.
+
+### Evolução da infraestrutura hospitalar
+
+Entre 2019 e 2024, o número de hospitais passou de 6.041 para 6.505, enquanto o total de leitos passou de 461.708 para 506.167. Os dados mostram crescimento da infraestrutura hospitalar no período analisado.
+
+A quantidade de leitos SUS também permaneceu representativa durante todo o período, correspondendo a aproximadamente dois terços dos leitos existentes.
+
+![Evolução anual da infraestrutura hospitalar no Brasil](imagens/evolucao_nacional.png)
+
+### Crescimento por região
+
+O crescimento não ocorreu da mesma forma em todas as regiões. Entre 2019 e 2024, o Norte apresentou o maior crescimento percentual no número de leitos, com 15,66%, seguido de perto pelo Centro-Oeste, com 15,61%.
+
+Em números absolutos, o Nordeste apresentou o maior aumento, com 15.815 novos leitos no período.
+
+![Crescimento da infraestrutura hospitalar por região](imagens/crescimento_regiao.png)
+
+### Oferta de leitos em relação à população
+
+Para comparar localidades com populações diferentes, foi utilizado o indicador de leitos por 100 mil habitantes.
+
+Em 2024, o Distrito Federal apresentou a maior oferta relativa entre as UFs, com 358,25 leitos por 100 mil habitantes. No outro extremo, Sergipe apresentou 162,81 leitos por 100 mil habitantes.
+
+Essa diferença mostra que a distribuição da infraestrutura hospitalar não acompanha a população da mesma forma em todas as unidades da federação.
+
+![Ranking das UFs pela oferta de leitos por 100 mil habitantes em 2024](imagens/oferta_leitos_uf_2024.png)
+
+### Análise municipal
+
+Para o ranking de menor oferta relativa, foram considerados municípios com 50 mil ou mais habitantes e com presença de Hospital Geral ou Hospital Especializado no recorte adotado. Esse filtro foi utilizado para reduzir distorções provocadas por taxas calculadas sobre populações muito pequenas.
+
+Entre os municípios analisados, foram encontradas diferenças importantes na quantidade de leitos disponíveis em relação ao tamanho da população. Palhoça (SC), por exemplo, apresentou 8,96 leitos por 100 mil habitantes no recorte analisado.
+
+![Municípios com menor oferta relativa de leitos em 2024](imagens/menor_oferta_municipal_2024.png)
+
+A análise permitiu identificar localidades com menor oferta relativa de infraestrutura, que podem ser investigadas com maior profundidade. No entanto, como este MVP analisa a oferta e não a utilização dos serviços, esses resultados não são suficientes, isoladamente, para afirmar que existe demanda por novos hospitais em determinada localidade.
+
+A análise de utilização estava prevista inicialmente por meio dos dados de produção hospitalar do SIH/SUS, mas essa fonte foi retirada do escopo durante a etapa de coleta devido ao volume e à fragmentação dos arquivos. Sua inclusão em uma continuidade do projeto permitiria confrontar a infraestrutura disponível com a utilização dos serviços hospitalares.
+
+## Autoavaliação
+
+Considero que os principais objetivos propostos para o MVP foram alcançados. Foi possível construir um pipeline completo, desde a ingestão e tratamento dos dados até a integração das fontes, criação dos indicadores e análise dos resultados.
+
+A maior dificuldade do projeto esteve na preparação e integração das bases. Os dados do IBGE vieram em formatos diferentes entre os anos e a ausência de uma chave municipal comum com o CNES exigiu um tratamento maior do que eu havia previsto inicialmente. Também foi necessário rever o escopo ao perceber que a inclusão do SIH/SUS tornaria o projeto muito mais extenso para o prazo disponível.
+
+Este foi meu primeiro projeto utilizando Databricks, e uma parte importante do aprendizado foi entender na prática a organização das camadas Bronze, Silver e Gold, a persistência em tabelas Delta e a importância das etapas de validação antes de realizar as análises.
+
+Como continuidade, gostaria de incluir os dados de utilização hospitalar do SIH/SUS. Isso permitiria avançar da análise da oferta de infraestrutura para uma comparação entre a estrutura disponível e a utilização dos serviços hospitalares.
