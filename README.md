@@ -1,4 +1,4 @@
-## Contexto de Negócio e Perguntas
+## Infraestrutura Hospitalar no Brasil: evolução e distribuição entre 2019 e 2024
 
 A ideia deste projeto surgiu a partir de uma curiosidade sobre a expansão dos serviços físicos. Hoje, muitos setores conseguem reduzir sua presença física à medida que os serviços migram para o ambiente digital. No setor da saúde, porém, essa dinâmica é diferente. Mesmo com o crescimento da telemedicina e dos atendimentos online, boa parte da assistência ainda depende de uma estrutura física, como hospitais, leitos e unidades de atendimento.
 
@@ -26,7 +26,7 @@ Para responder às perguntas do projeto, foram utilizadas duas fontes públicas 
 
 **CNES/DATASUS — Hospitais e Leitos**
 
-Foram utilizados os arquivos anuais de Hospitais e Leitos do CNES, de 2019 a 2024. A base possui registros por competência mensal e contém informações sobre os estabelecimentos de saúde, localização, tipo de unidade, quantidade de leitos existentes, leitos SUS e leitos de UTI.
+Foram utilizados os arquivos de Hospitais e Leitos do CNES referentes ao período de 2019 a 2024. Como a base possui registros por competência mensal, a competência de dezembro foi adotada como referência anual para as análises.
 
 **IBGE — População dos Municípios**
 
@@ -39,8 +39,6 @@ Os arquivos do IBGE apresentavam formatos diferentes entre os anos. Por isso, fo
 Inicialmente, o projeto também previa a utilização de dados de produção hospitalar do SIH/SUS, com o objetivo de analisar não apenas a oferta, mas também a utilização da infraestrutura hospitalar.
 
 Durante a etapa de coleta, essa fonte se mostrou muito mais extensa e fragmentada do que o previsto, com arquivos mensais que aumentariam bastante a complexidade do pipeline para o escopo deste MVP. Por esse motivo, optei por manter o projeto concentrado na análise da oferta de infraestrutura, utilizando CNES e IBGE.
-
-Essa decisão também definiu o limite da análise: os resultados permitem observar a presença e a oferta relativa de hospitais e leitos, mas não medir sua utilização ou a demanda pelos serviços.
 
 Os dados utilizados são de acesso público e foram obtidos em fontes oficiais do Governo Federal, por meio do DATASUS/CNES e do IBGE. As fontes originais foram identificadas e mantidas na documentação do projeto.
 
@@ -102,7 +100,7 @@ As tabelas intermediárias e finais foram persistidas em formato Delta no Databr
 
 As tabelas resultantes do pipeline foram persistidas no Databricks em formato Delta. A imagem abaixo apresenta as tabelas analíticas da camada Gold disponíveis no catálogo.
 
-![Tabelas da camada Gold persistidas no Databrick](imagens/tabelas_gold.png)
+![Tabelas da camada Gold persistidas no Databricks](imagens/tabelas_gold.png)
 
 ## Qualidade de Dados
 
