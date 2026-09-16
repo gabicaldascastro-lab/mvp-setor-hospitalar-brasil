@@ -103,3 +103,19 @@ As tabelas intermediárias e finais foram persistidas em formato Delta no Databr
 As tabelas resultantes do pipeline foram persistidas no Databricks em formato Delta. A imagem abaixo apresenta as tabelas analíticas da camada Gold disponíveis no catálogo.
 
 ![Tabelas da camada Gold persistidas no Databrick](imagens/tabelas_gold.png)
+
+## Qualidade de Dados
+
+A qualidade dos dados foi verificada ao longo das etapas de tratamento, considerando valores nulos, duplicidades, tipos de dados, valores inválidos e consistência das chaves utilizadas na integração.
+
+No CNES, após a seleção da competência de dezembro como referência anual, foi validada a chave `ANO + CNES`, sem duplicidades na tabela final. Também foram verificados valores negativos nos campos de leitos, não sendo encontrados registros nessa condição.
+
+Foi identificada uma inconsistência em um registro de 2020, no qual a quantidade de leitos SUS era superior à quantidade de leitos existentes. Como não havia informação suficiente para determinar qual valor estava incorreto, o registro foi mantido conforme a fonte original, sem alteração dos valores.
+
+![Inconsistência identificada nos dados de leitos do CNES](imagens/inconsistencia_2020.png)
+
+Nos dados do IBGE, foram tratados registros administrativos, valores populacionais não numéricos e diferenças de formato entre os anos. A tabela municipal final ficou com 5.570 municípios em cada ano analisado, sem duplicidades na chave `ANO + COD_MUNICIPIO`, valores nulos ou populações não positivas.
+
+Na integração entre CNES e IBGE, também foram identificadas diferenças na nomenclatura de alguns municípios. Essas ocorrências foram verificadas e tratadas por meio de equivalências controladas antes da adoção do código oficial do município como chave para a integração temporal.
+
+As validações detalhadas estão disponíveis nos notebooks da pasta [notebooks](notebooks/).
