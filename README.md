@@ -98,8 +98,8 @@ Os notebooks estão disponíveis na pasta [notebooks](notebooks/).
 
 As tabelas intermediárias e finais foram persistidas em formato Delta no Databricks, nos schemas `bronze`, `silver` e `gold`.
 
-### Persistência das tabelas
+### Persistencia das tabelas
 
 As tabelas resultantes do pipeline foram persistidas no Databricks em formato Delta. A imagem abaixo apresenta as tabelas analíticas da camada Gold disponíveis no catálogo.
 
-!""""""""![Tabelas da camada Gold persistidas no Databrick!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+![Tabelas da camada Gold persistidas no Databrick](imagens/tabelas_gold.png)
