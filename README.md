@@ -102,4 +102,4 @@ As tabelas intermediárias e finais foram persistidas em formato Delta no Databr
 
 As tabelas resultantes do pipeline foram persistidas no Databricks em formato Delta. A imagem abaixo apresenta as tabelas analíticas da camada Gold disponíveis no catálogo.
 
-![Tabelas da camada Gold persistidas no Databricks](imagens/gold_tabelas.png)
+!""""""""![Tabelas da camada Gold persistidas no Databrick!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
