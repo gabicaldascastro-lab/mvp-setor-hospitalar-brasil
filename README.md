@@ -86,4 +86,14 @@ A camada Gold foi construída para concentrar as tabelas utilizadas diretamente 
 
 O catálogo foi construído para documentar as nove tabelas analíticas da camada Gold. Para cada tabela foram registrados o contexto, os campos, tipos de dados, chaves lógicas, domínios observados e a linhagem dos dados.
 
-O catálogo completo pode ser consultado no arquivo [CATÁLOGO_DADOS.md](CATÁLOGO_DADOS.md).
+O catálogo completo pode ser consultado no arquivo [CATALOGO_DADOS.md](CATALOGO_DADOS.md).
+
+## Pipeline de Dados
+
+O pipeline foi desenvolvido no Databricks e dividido em notebooks para separar as principais etapas do processo, desde a ingestão dos dados até a construção dos indicadores e do catálogo de dados.
+
+![Organização dos notebooks do pipeline no Databricks](imagens/pipeline_notebooks.png)
+
+Os notebooks estão disponíveis na pasta [notebooks](notebooks/).
+
+As tabelas intermediárias e finais foram persistidas em formato Delta no Databricks, nos schemas `bronze`, `silver` e `gold`.
