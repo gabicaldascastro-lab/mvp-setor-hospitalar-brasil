@@ -40,7 +40,7 @@ Inicialmente, o projeto também previa a utilização de dados de produção hos
 
 Durante a etapa de coleta, essa fonte se mostrou muito mais extensa e fragmentada do que o previsto, com arquivos mensais que aumentariam bastante a complexidade do pipeline para o escopo deste MVP. Por esse motivo, optei por manter o projeto concentrado na análise da oferta de infraestrutura, utilizando CNES e IBGE.
 
-Os dados utilizados são de acesso público e foram obtidos em fontes oficiais do Governo Federal, por meio do DATASUS/CNES e do IBGE. As fontes originais foram identificadas e mantidas na documentação do projeto.
+Os dados utilizados são de acesso público e foram obtidos em fontes oficiais do Governo Federal. O Portal de Dados Abertos do SUS, utilizado para os dados do CNES, informa que seu conteúdo é disponibilizado sob a licença Creative Commons Atribuição-SemDerivações 3.0. Os dados populacionais utilizados foram obtidos diretamente nos canais oficiais do IBGE, que disponibiliza publicamente os resultados de suas estatísticas oficiais.
 
 ## Carga dos Dados
 
@@ -94,6 +94,8 @@ O pipeline foi desenvolvido no Databricks e dividido em notebooks para separar a
 
 Os notebooks estão disponíveis na pasta [notebooks](notebooks/).
 
+Os primeiros notebooks realizam a ingestão dos dados na camada Bronze e o tratamento separado das bases do CNES e do IBGE na camada Silver. Em seguida, as duas fontes são integradas e, a partir dessa base, são construídas as tabelas da camada Gold utilizadas nas análises.
+
 As tabelas intermediárias e finais foram persistidas em formato Delta no Databricks, nos schemas `bronze`, `silver` e `gold`.
 
 ### Persistencia das tabelas
@@ -132,6 +134,8 @@ A quantidade de leitos SUS também permaneceu representativa durante todo o per�
 
 ### Crescimento por região
 
+Em 2024, a maior concentração absoluta da infraestrutura hospitalar estava no Sudeste, com 2.157 hospitais e 210.563 leitos. Em seguida aparecia o Nordeste, com 1.993 hospitais e 129.413 leitos.
+
 O crescimento não ocorreu da mesma forma em todas as regiões. Entre 2019 e 2024, o Norte apresentou o maior crescimento percentual no número de leitos, com 15,66%, seguido de perto pelo Centro-Oeste, com 15,61%.
 
 Em números absolutos, o Nordeste apresentou o maior aumento, com 15.815 novos leitos no período.
@@ -163,6 +167,8 @@ A análise de utilização estava prevista inicialmente por meio dos dados de pr
 ## Autoavaliação
 
 Considero que os principais objetivos propostos para o MVP foram alcançados. Foi possível construir um pipeline completo, desde a ingestão e tratamento dos dados até a integração das fontes, criação dos indicadores e análise dos resultados.
+
+Das perguntas definidas inicialmente, a comparação do crescimento ao longo do período foi desenvolvida em nível regional. Para as UFs, a análise se concentrou na oferta de leitos em relação à população em 2024. A ampliação da comparação temporal também para o nível estadual é uma possibilidade de continuidade do projeto.
 
 A maior dificuldade do projeto esteve na preparação e integração das bases. Os dados do IBGE vieram em formatos diferentes entre os anos e a ausência de uma chave municipal comum com o CNES exigiu um tratamento maior do que eu havia previsto inicialmente. Também foi necessário rever o escopo ao perceber que a inclusão do SIH/SUS tornaria o projeto muito mais extenso para o prazo disponível.
 
