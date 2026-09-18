@@ -60,7 +60,7 @@ A imagem abaixo mostra os arquivos do CNES e do IBGE armazenados no Volume utili
 
 ## Modelagem e Catálogo de Dados
 
-Para organizar os dados, optei por uma modelagem Flat por conceito, utilizando a arquitetura em camadas Bronze, Silver e Gold.
+Para organizar os dados, optei por uma modelagem analítica com tabelas Flat, utilizando a arquitetura em camadas Bronze, Silver e Gold.
 
 Escolhi esse modelo porque o objetivo do projeto não era construir um Data Warehouse com uma tabela fato e várias dimensões, mas preparar e integrar duas fontes diferentes para gerar tabelas voltadas às análises propostas. Para este MVP, essa estrutura deixou o pipeline mais simples de acompanhar e facilitou a separação entre os dados brutos, os tratamentos e os indicadores finais.
 
