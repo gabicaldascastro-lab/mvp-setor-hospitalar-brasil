@@ -118,6 +118,8 @@ Nos dados do IBGE, foram tratados registros administrativos, valores populaciona
 
 Na integração entre CNES e IBGE, também foram identificadas diferenças na nomenclatura de alguns municípios. Essas ocorrências foram verificadas e tratadas por meio de equivalências controladas antes da adoção do código oficial do município como chave para a integração temporal.
 
+![Diferenças de nomenclatura identificadas na integração entre CNES e IBGE](imagens/divergencias_municipios.png)
+
 As validações detalhadas estão disponíveis nos notebooks da pasta [notebooks](notebooks/).
 
 ## Análise de Dados
